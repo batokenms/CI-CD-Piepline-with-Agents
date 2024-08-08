@@ -1,0 +1,40 @@
+---
+- name: CI Pipeline Setup with Jenkins
+  hosts: aws
+  become: yes
+
+  tasks:
+    - name: Update and upgrade the server
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install required packages
+      yum:
+        name:
+          - docker
+          - git
+          - maven
+          - python3
+          - python3-pip
+          - httpd
+          - mariadb-server
+        state: present
+
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Start and enable Apache (httpd) service
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Start and enable MariaDB (MySQL) service
+      systemd:
+        name: mariadb
+        state: started
+        enabled: yes

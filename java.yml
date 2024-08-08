@@ -1,0 +1,27 @@
+---
+- name: Install Java 17 on Amazon Linux 2
+  hosts: aws
+  become: yes
+  vars:
+    java_version: "17"
+    java_package_name: "java-17-amazon-corretto-devel"
+
+  tasks:
+    - name: Update all packages
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install Java 17
+      yum:
+        name: "{{ java_package_name }}"
+        state: present
+
+    - name: Verify Java Installation
+      command: java -version
+      register: java_version_output
+      ignore_errors: yes
+
+    - name: Print Java version
+      debug:
+        msg: "{{ java_version_output.stdout }}"

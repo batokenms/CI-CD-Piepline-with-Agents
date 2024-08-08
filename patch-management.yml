@@ -1,0 +1,15 @@
+---
+- name: Patch management playbook for Amazon Linux
+  hosts: aws
+  become: yes
+
+  tasks:
+  - name: Update the package list
+    yum:
+      name: '*'
+      state: present
+
+  - name: Upgrade all packages to the latest version
+    yum:
+      name: '*'
+      state: latest
