@@ -3,3 +3,5 @@
 Update Docker Socket Permissions: Ensure that the Docker socket has the appropriate permissions.
 
 sudo chmod 666 /var/run/docker.sock
+
+# For this project, you must build a Jenkins image to use for the CI/CD pipeline using jenkins/jenkins as the base image.
