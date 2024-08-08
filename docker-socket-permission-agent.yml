@@ -1,0 +1,18 @@
+---
+- name: Ensure Docker socket permissions are correct
+  hosts: aws
+  become: true
+  tasks:
+    - name: Update Docker socket permissions
+      file:
+        path: /var/run/docker.sock
+        mode: '0666'
+        state: file
+      notify:
+        - Restart Docker
+
+  handlers:
+    - name: Restart Docker
+      service:
+        name: docker
+        state: restarted

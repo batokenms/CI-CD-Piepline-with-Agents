@@ -1,7 +1,7 @@
 ---
 - name: CI Pipeline Setup with Jenkins
   hosts: aws
-  become: yes
+  become: yes 
 
   tasks:
     - name: Update and upgrade the server
