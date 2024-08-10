@@ -9,4 +9,4 @@ docker run \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /usr/bin/docker:/usr/bin/docker \
   -v /home/jenkins_home:/var/jenkins_home \
-  jeanp12/my-jenkins:latest
+  jeanp12/data-it-cloud-jenkins:latest
